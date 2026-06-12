@@ -1,0 +1,40 @@
+name: Update live scores
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # every 5 minutes (GitHub may add a few minutes' lag)
+  workflow_dispatch:         # manual "Run workflow" button
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Skip outside tournament window
+        run: |
+          d=$(date -u +%Y%m%d)
+          if [ "$d" -lt 20260611 ] || [ "$d" -gt 20260720 ]; then
+            echo "Outside tournament window, skipping."
+            echo "SKIP=1" >> "$GITHUB_ENV"
+          fi
+
+      - uses: actions/checkout@v4
+        if: env.SKIP != '1'
+
+      - name: Fetch scores from football-data.org
+        if: env.SKIP != '1'
+        run: |
+          curl -sf --max-time 30 \
+            -H "X-Auth-Token: ${{ secrets.FOOTBALL_DATA_KEY }}" \
+            "https://api.football-data.org/v4/competitions/WC/matches" \
+            -o live.json
+          # sanity check: must be valid JSON with a matches array
+          python3 -c "import json;d=json.load(open('live.json'));assert isinstance(d.get('matches'),list)"
+
+      - name: Commit if changed
+        if: env.SKIP != '1'
+        run: |
+          git config user.name "scores-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add live.json
+          git diff --cached --quiet || { git commit -m "update live scores"; git push; }
