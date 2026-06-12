@@ -349,6 +349,18 @@ function saveKey(){ const v=document.getElementById("keyinput").value.trim(); if
 function setStatus(cls,msg){ document.getElementById("apidot").className="dot "+cls; document.getElementById("apistatus").textContent=msg; }
 
 /* ---------- data fetching ---------- */
+function mapFDMatches(j){
+  return (j.matches||[]).map(m=>({
+    id:m.id, utc:m.utcDate, status:m.status, stage:m.stage, group:(m.group||"").replace("GROUP_",""),
+    home:findTeam(m.homeTeam), away:findTeam(m.awayTeam),
+    homeName:m.homeTeam&&m.homeTeam.name, awayName:m.awayTeam&&m.awayTeam.name,
+    hs:m.score&&m.score.fullTime?m.score.fullTime.home:null,
+    as:m.score&&m.score.fullTime?m.score.fullTime.away:null,
+    winner:m.score&&m.score.winner, duration:m.score&&m.score.duration,
+    ph:m.score&&m.score.penalties?m.score.penalties.home:null,
+    pa:m.score&&m.score.penalties?m.score.penalties.away:null
+  }));
+}
 async function fetchFD(){
   const key=apiKey(); if(!key) throw {noKey:true};
   const url="https://api.football-data.org/v4/competitions/WC/matches";
@@ -361,17 +373,14 @@ async function fetchFD(){
   if(res.status===403||res.status===400) throw {badKey:true};
   if(res.status===429) throw {rateLimit:true};
   if(!res.ok) throw new Error("HTTP "+res.status);
-  const j=await res.json();
-  return (j.matches||[]).map(m=>({
-    id:m.id, utc:m.utcDate, status:m.status, stage:m.stage, group:(m.group||"").replace("GROUP_",""),
-    home:findTeam(m.homeTeam), away:findTeam(m.awayTeam),
-    homeName:m.homeTeam&&m.homeTeam.name, awayName:m.awayTeam&&m.awayTeam.name,
-    hs:m.score&&m.score.fullTime?m.score.fullTime.home:null,
-    as:m.score&&m.score.fullTime?m.score.fullTime.away:null,
-    winner:m.score&&m.score.winner, duration:m.score&&m.score.duration,
-    ph:m.score&&m.score.penalties?m.score.penalties.home:null,
-    pa:m.score&&m.score.penalties?m.score.penalties.away:null
-  }));
+  return mapFDMatches(await res.json());
+}
+/* same-origin snapshot written by the repo's GitHub Action — reachable even
+   behind corporate filters/VPNs that block the API domain */
+async function fetchSnapshot(){
+  const res=await fetch("live.json?t="+Date.now(),{cache:"no-store"});
+  if(!res.ok) throw new Error("snapshot "+res.status);
+  return mapFDMatches(await res.json());
 }
 async function fetchOpenFootball(){
   const res=await fetch("https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json");
@@ -408,12 +417,18 @@ async function refresh(){
     setStatus("ok","Live · football-data.org"); document.getElementById("keybanner").style.display="none";
   }catch(e){
     try{
+      MATCHES=await fetchSnapshot(); DATA_SOURCE="snapshot";
+      setStatus("ok","Live · site feed (updates every few minutes)");
+      document.getElementById("keybanner").style.display="none";
+    }catch(eSnap){
+    try{
       MATCHES=await fetchOpenFootball(); DATA_SOURCE="openfootball";
       if(e.noKey){ setStatus("warn","Fixtures only — add an API key for live scores"); document.getElementById("keybanner").style.display="block"; }
       else if(e.badKey){ setStatus("err","API key rejected — check it"); document.getElementById("keybanner").style.display="block"; }
       else if(e.rateLimit){ setStatus("warn","Rate limit hit (10/min free) — showing fallback, retrying soon"); }
       else { setStatus("warn","Live feed unreachable — showing free fixture source"); }
     }catch(e2){ setStatus("err","No data source reachable — check connection"); }
+    }
   }
   LAST_FETCH=new Date();
   document.getElementById("updated").textContent="Updated "+LAST_FETCH.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit",timeZone:"Europe/London"});
