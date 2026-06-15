@@ -493,7 +493,7 @@ function computeScores(){
   for(const [code,a0] of Object.entries(CONFIG.adjustments||{})){
     if(!S[code]) continue; const a={...emptyAdj(),...a0};
     const adjRaw=(a.pensWon||0)-(a.redCards||0)-(a.ownGoals||0)-(a.missedPens||0);
-    if(adjRaw){S[code].raw+=adjRaw; S[code].lines.push({label:"Organizer events ("+[a.pensWon&&("+"+a.pensWon+" pens won"),a.redCards&&(a.redCards+" red"),a.ownGoals&&(a.ownGoals+" OG"),a.missedPens&&(a.missedPens+" missed pen")].filter(Boolean).join(", ")+")",pts:adjRaw});}
+    if(a.pensWon||a.redCards||a.ownGoals||a.missedPens){S[code].raw+=adjRaw; S[code].lines.push({label:"Organizer events ("+[a.pensWon&&("+"+a.pensWon+" pens won"),a.redCards&&(a.redCards+" red"),a.ownGoals&&(a.ownGoals+" OG"),a.missedPens&&(a.missedPens+" missed pen")].filter(Boolean).join(", ")+")",pts:adjRaw});}
     if(a.flat){S[code].flat+=a.flat; S[code].lines.push({label:"Manual adj"+(a.note?" — "+a.note:""),pts:a.flat,flat:true});}
   }
   /* per-match organizer events (chaos & pens) */
@@ -503,7 +503,7 @@ function computeScores(){
     for(const [code,a0] of Object.entries(teams)){
       if(!S[code]) continue; const a={...emptyAdj(),...a0};
       const d=(a.pensWon||0)-(a.redCards||0)-(a.ownGoals||0)-(a.missedPens||0);
-      if(!d) continue;
+      if(!(a.pensWon||a.redCards||a.ownGoals||a.missedPens)) continue;
       const opp=TEAM[code===H?A:H];
       const det=[a.pensWon&&("+"+a.pensWon+" pen won"),a.redCards&&(a.redCards+" red"),a.ownGoals&&(a.ownGoals+" OG"),a.missedPens&&(a.missedPens+" missed pen")].filter(Boolean).join(", ");
       S[code].raw+=d;
