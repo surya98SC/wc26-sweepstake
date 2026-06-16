@@ -12,7 +12,7 @@
     "KSA": "Ian Wright", "GHA": "Duncan Shine", "BIH": "Brian Fenics", "RSA": "Yousouf Alouat",
     "UZB": "", "QAT": "", "IRQ": "", "JOR": "", "CPV": "", "CUW": "", "HAI": "", "NZL": ""
   },
-  "matchEvents": {
+"matchEvents": {
   "2026-06-11-MEX-RSA": {
     "MEX": {"pensWon": 0, "redCards": 1, "ownGoals": 0, "missedPens": 0},
     "RSA": {"pensWon": 0, "redCards": 2, "ownGoals": 0, "missedPens": 0}
@@ -28,6 +28,10 @@
   "2026-06-14-GER-CUW": {
     "GER": {"pensWon": 1, "redCards": 0, "ownGoals": 0, "missedPens": 0},
     "CUW": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}
+  },
+  "2026-06-15-BEL-EGY": {
+    "BEL": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0},
+    "EGY": {"pensWon": 0, "redCards": 0, "ownGoals": 1, "missedPens": 0}
   }
 },
   "awards": {
