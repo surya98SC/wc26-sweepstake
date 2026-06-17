@@ -12,37 +12,38 @@
     "KSA": "Ian Wright", "GHA": "Duncan Shine", "BIH": "Brian Fenics", "RSA": "Yousouf Alouat",
     "UZB": "", "QAT": "", "IRQ": "", "JOR": "", "CPV": "", "CUW": "", "HAI": "", "NZL": ""
   },
-"matchEvents": {
-  "2026-06-11-MEX-RSA": {
-    "MEX": {"pensWon": 0, "redCards": 1, "ownGoals": 0, "missedPens": 0},
-    "RSA": {"pensWon": 0, "redCards": 2, "ownGoals": 0, "missedPens": 0}
+  "matchEvents": {
+    "2026-06-11-MEX-RSA": {
+      "MEX": {"pensWon": 0, "redCards": 1, "ownGoals": 0, "missedPens": 0},
+      "RSA": {"pensWon": 0, "redCards": 2, "ownGoals": 0, "missedPens": 0}
+    },
+    "2026-06-13-USA-PAR": {
+      "USA": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0},
+      "PAR": {"pensWon": 0, "redCards": 0, "ownGoals": 1, "missedPens": 0}
+    },
+    "2026-06-13-QAT-SUI": {
+      "QAT": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0},
+      "SUI": {"pensWon": 1, "redCards": 0, "ownGoals": 1, "missedPens": 0}
+    },
+    "2026-06-14-GER-CUW": {
+      "GER": {"pensWon": 1, "redCards": 0, "ownGoals": 0, "missedPens": 0},
+      "CUW": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}
+    },
+    "2026-06-15-BEL-EGY": {
+      "BEL": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0},
+      "EGY": {"pensWon": 0, "redCards": 0, "ownGoals": 1, "missedPens": 0}
+    },
+    "2026-06-16-IRQ-NOR": {
+      "IRQ": {"pensWon": 0, "redCards": 0, "ownGoals": 1, "missedPens": 0},
+      "NOR": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}
+    },
+    "2026-06-17-AUT-JOR": {
+      "AUT": {"pensWon": 1, "redCards": 0, "ownGoals": 0, "missedPens": 0},
+      "JOR": {"pensWon": 0, "redCards": 0, "ownGoals": 1, "missedPens": 0}
+    }
   },
-  "2026-06-13-USA-PAR": {
-    "USA": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0},
-    "PAR": {"pensWon": 0, "redCards": 0, "ownGoals": 1, "missedPens": 0}
-  },
-  "2026-06-13-QAT-SUI": {
-    "QAT": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0},
-    "SUI": {"pensWon": 1, "redCards": 0, "ownGoals": 1, "missedPens": 0}
-  },
-  "2026-06-14-GER-CUW": {
-    "GER": {"pensWon": 1, "redCards": 0, "ownGoals": 0, "missedPens": 0},
-    "CUW": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}
-  },
-  "2026-06-15-BEL-EGY": {
-    "BEL": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0},
-    "EGY": {"pensWon": 0, "redCards": 0, "ownGoals": 1, "missedPens": 0}
-  },
-  "2026-06-16-IRQ-NOR": {
-    "IRQ": {"pensWon": 0, "redCards": 0, "ownGoals": 1, "missedPens": 0},
-    "NOR": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}
-  },
-  "2026-06-17-AUT-JOR": {
-    "AUT": {"pensWon": 1, "redCards": 0, "ownGoals": 0, "missedPens": 0},
-    "JOR": {"pensWon": 0, "redCards": 0, "ownGoals": 1, "missedPens": 0}
+  "awards": {
+    "Golden Boot": [], "Golden Ball": [], "Golden Glove": [], "Best Loser": [],
+    "Best Gainer": [], "Leakiest Defence": [], "Dirtiest Team": [], "Own Goal Machine": []
   }
-},
-"awards": {
-  "Golden Boot": [], "Golden Ball": [], "Golden Glove": [], "Best Loser": [],
-  "Best Gainer": [], "Leakiest Defence": [], "Dirtiest Team": [], "Own Goal Machine": []
 }
