@@ -40,6 +40,10 @@
     "2026-06-17-AUT-JOR": {
       "AUT": {"pensWon": 1, "redCards": 0, "ownGoals": 0, "missedPens": 0},
       "JOR": {"pensWon": 0, "redCards": 0, "ownGoals": 1, "missedPens": 0}
+  },
+    "2026-06-17-ENG-CRO": {
+      "ENG": {"pensWon": 1, "redCards": 0, "ownGoals": 0, "missedPens": 0},
+      "CRO": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}
     }
   },
   "awards": {
