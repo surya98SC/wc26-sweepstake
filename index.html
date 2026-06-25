@@ -196,7 +196,7 @@ tr.podium td{background:#f5a62311}
       <div class="hint">Chaos & in-match penalty events are confirmed by the organizer after each matchday.</div>
     </div>
     <div class="card"><h2>🚀 Progression <span class="hint">(× tier)</span></h2>
-      <div class="rule-line"><span>Qualify from groups</span><b>+5</b></div>
+      <div class="rule-line"><span>Qualify from groups</span><b>+5 flat</b></div>
       <div class="rule-line"><span>Win Round of 32</span><b>+5</b></div>
       <div class="rule-line"><span>Win Round of 16</span><b>+5</b></div>
       <div class="rule-line"><span>Win Quarter-final</span><b>+5</b></div>
@@ -485,7 +485,7 @@ function computeScores(){
       }
     }
   }
-  qualified.forEach(code=>{ if(S[code]){ S[code].raw+=5; S[code].gsRaw+=5; S[code].lines.push({label:"Qualified from groups +5",pts:5}); }});
+  qualified.forEach(code=>{ if(S[code]){ S[code].flat+=5; S[code].gsFlat=(S[code].gsFlat||0)+5; S[code].lines.push({label:"Qualified from groups +5",pts:5,flat:true}); }});
   /* group-stage elimination: groups done & not qualified */
   const gsDone=MATCHES.filter(m=>m.stage==="GROUP_STAGE").every(m=>m.status==="FINISHED")&&MATCHES.length>0&&qualified.size>0;
   if(gsDone) TEAMS.forEach(t=>{ if(!qualified.has(t.code)) S[t.code].out=true; });
@@ -517,7 +517,7 @@ function computeScores(){
   }
   const out={};
   TEAMS.forEach(t=>{ const s=S[t.code];
-    out[t.code]={...s, total:s.raw*t.tier+s.flat, gsTotal:s.gsRaw*t.tier}; });
+    out[t.code]={...s, total:s.raw*t.tier+s.flat, gsTotal:s.gsRaw*t.tier+(s.gsFlat||0)};
   return out;
 }
 
