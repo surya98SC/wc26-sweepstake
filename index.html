@@ -517,7 +517,7 @@ function computeScores(){
   }
   const out={};
   TEAMS.forEach(t=>{ const s=S[t.code];
-    out[t.code]={...s, total:s.raw*t.tier+s.flat, gsTotal:s.gsRaw*t.tier+(s.gsFlat||0)};
+    out[t.code]={...s, total:s.raw*t.tier+s.flat, gsTotal:s.gsRaw*t.tier+(s.gsFlat||0)}; });
   return out;
 }
 
