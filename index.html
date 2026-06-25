@@ -195,7 +195,7 @@ tr.podium td{background:#f5a62311}
       <div class="rule-line"><span>Penalty missed / saved</span><b>−1</b></div>
       <div class="hint">Chaos & in-match penalty events are confirmed by the organizer after each matchday.</div>
     </div>
-    <div class="card"><h2>🚀 Progression <span class="hint">(× tier)</span></h2>
+    <div class="card"><h2>🚀 Progression <span class="hint">(flat)</span></h2>
       <div class="rule-line"><span>Qualify from groups</span><b>+5 flat</b></div>
       <div class="rule-line"><span>Win Round of 32</span><b>+5</b></div>
       <div class="rule-line"><span>Win Round of 16</span><b>+5</b></div>
@@ -479,7 +479,7 @@ function computeScores(){
       if(isKO && m.status==="FINISHED" && m.stage!=="THIRD_PLACE"){
         const wonKO = pens ? (side==="home"?m.ph>m.pa:m.pa>m.ph)
                            : (m.winner==="HOME_TEAM")===(side==="home") && m.winner!=="DRAW";
-        if(wonKO){ S[code].raw+=5; S[code].lines.push({label:"Won "+STAGE_LABEL[m.stage]+" +5",pts:5}); if(m.stage==="FINAL")S[code].champion=true; }
+        if(wonKO){ S[code].flat+=5; S[code].lines.push({label:"Won "+STAGE_LABEL[m.stage]+" +5",pts:5,flat:true}); if(m.stage==="FINAL")S[code].champion=true; }
         else if(m.stage!=="FINAL"){ S[code].out=true; }
         else { S[code].out=true; }
       }
