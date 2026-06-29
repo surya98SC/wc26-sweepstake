@@ -109,6 +109,10 @@
     "EGY": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0},
     "IRN": {"pensWon": 1, "redCards": 0, "ownGoals": 0, "missedPens": 1}
   },
+    "2026-06-27-CRO-GHA": {
+    "GHA": {"pensWon": 0, "redCards": 1, "ownGoals": 0, "missedPens": 0},
+    "CRO": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}
+  },
     "2026-06-28-COD-UZB": {
     "COD": {"pensWon": 1, "redCards": 0, "ownGoals": 0, "missedPens": 0},
     "UZB": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}
