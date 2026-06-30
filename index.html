@@ -354,11 +354,12 @@ function mapFDMatches(j){
     id:m.id, utc:m.utcDate, status:m.status, stage:m.stage, group:(m.group||"").replace("GROUP_",""),
     home:findTeam(m.homeTeam), away:findTeam(m.awayTeam),
     homeName:m.homeTeam&&m.homeTeam.name, awayName:m.awayTeam&&m.awayTeam.name,
-    hs:m.score&&m.score.fullTime?(m.score.duration==="PENALTY_SHOOTOUT"&&m.score.penalties?m.score.fullTime.home-m.score.penalties.home:m.score.fullTime.home):null,
-    as:m.score&&m.score.fullTime?(m.score.duration==="PENALTY_SHOOTOUT"&&m.score.penalties?m.score.fullTime.away-m.score.penalties.away:m.score.fullTime.away):null,
+   hs:m.score&&m.score.fullTime?(m.score.duration==="PENALTY_SHOOTOUT"&&m.score.regularTime&&m.score.regularTime.home!=null?m.score.regularTime.home+(m.score.extraTime&&m.score.extraTime.home!=null?m.score.extraTime.home:0):m.score.fullTime.home):null,
+    as:m.score&&m.score.fullTime?(m.score.duration==="PENALTY_SHOOTOUT"&&m.score.regularTime&&m.score.regularTime.away!=null?m.score.regularTime.away+(m.score.extraTime&&m.score.extraTime.away!=null?m.score.extraTime.away:0):m.score.fullTime.away):null,
     winner:m.score&&m.score.winner, duration:m.score&&m.score.duration,
     ph:m.score&&m.score.penalties?m.score.penalties.home:null,
-    pa:m.score&&m.score.penalties?m.score.penalties.away:null
+    pa:m.score&&m.score.penalties?m.score.penalties.away:null,
+    penWin:m.score&&m.score.duration==="PENALTY_SHOOTOUT"&&m.score.fullTime?(m.score.fullTime.home>m.score.fullTime.away?"HOME_TEAM":m.score.fullTime.away>m.score.fullTime.home?"AWAY_TEAM":null):null
   }));
 }
 async function fetchFD(){
@@ -468,7 +469,7 @@ function computeScores(){
       if(gf>0){pts+=gf;parts.push(gf+" scored +"+gf);}
       if(ga>0){pts+=ga*0.5;parts.push(ga+" conceded +"+(ga*0.5));}
       if(ga===0){pts+=2;parts.push("Clean sheet +2");}
-      if(pens){ const won=(side==="home"?m.ph>m.pa:m.pa>m.ph); if(won){pts+=1;parts.push("Shootout win +1");} }
+      if(pens){ const won=m.penWin?(side==="home"?m.penWin==="HOME_TEAM":m.penWin==="AWAY_TEAM"):(side==="home"?m.ph>m.pa:m.pa>m.ph); if(won){pts+=1;parts.push("Shootout win +1");} }
       const opp=TEAM[m[side==="home"?"away":"home"]];
       const label=(live?"⚡ LIVE ":"")+STAGE_LABEL[m.stage]+(m.group?" "+m.group:"")+" vs "+(opp?opp.flag+" "+opp.name:"?")+" ("+gf+"–"+ga+(pens?" pens "+m.ph+"–"+m.pa:"")+")";
       S[code].lines.push({label, pts, live});
@@ -477,7 +478,7 @@ function computeScores(){
       if(live) S[code].live=true;
       /* knockout progression: winner of finished KO match (not 3rd place) */
       if(isKO && m.status==="FINISHED" && m.stage!=="THIRD_PLACE"){
-        const wonKO = pens ? (side==="home"?m.ph>m.pa:m.pa>m.ph)
+      const wonKO = pens ? (m.penWin?(side==="home"?m.penWin==="HOME_TEAM":m.penWin==="AWAY_TEAM"):(side==="home"?m.ph>m.pa:m.pa>m.ph))
                            : (m.winner==="HOME_TEAM")===(side==="home") && m.winner!=="DRAW";
         if(wonKO){ S[code].flat+=5; S[code].lines.push({label:"Won "+STAGE_LABEL[m.stage]+" +5",pts:5,flat:true}); if(m.stage==="FINAL")S[code].champion=true; }
         else if(m.stage!=="FINAL"){ S[code].out=true; }
