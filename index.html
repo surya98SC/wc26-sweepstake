@@ -354,8 +354,8 @@ function mapFDMatches(j){
     id:m.id, utc:m.utcDate, status:m.status, stage:m.stage, group:(m.group||"").replace("GROUP_",""),
     home:findTeam(m.homeTeam), away:findTeam(m.awayTeam),
     homeName:m.homeTeam&&m.homeTeam.name, awayName:m.awayTeam&&m.awayTeam.name,
-    hs:m.score&&m.score.fullTime?m.score.fullTime.home:null,
-    as:m.score&&m.score.fullTime?m.score.fullTime.away:null,
+    hs:m.score&&m.score.fullTime?(m.score.duration==="PENALTY_SHOOTOUT"&&m.score.penalties?m.score.fullTime.home-m.score.penalties.home:m.score.fullTime.home):null,
+    as:m.score&&m.score.fullTime?(m.score.duration==="PENALTY_SHOOTOUT"&&m.score.penalties?m.score.fullTime.away-m.score.penalties.away:m.score.fullTime.away):null,
     winner:m.score&&m.score.winner, duration:m.score&&m.score.duration,
     ph:m.score&&m.score.penalties?m.score.penalties.home:null,
     pa:m.score&&m.score.penalties?m.score.penalties.away:null
