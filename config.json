@@ -124,7 +124,15 @@
  "2026-07-01-MEX-ECU": {
    "MEX": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}, 
    "ECU": {"pensWon": 0, "redCards": 1, "ownGoals": 0, "missedPens": 0}
- }
+ },
+ "2026-07-01-BEL-SEN": {
+   "BEL": {"pensWon": 1, "redCards": 0, "ownGoals": 0, "missedPens": 0}, 
+   "SEN": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}
+ }, 
+ "2026-07-02-USA-BIH": {
+    "USA": {"pensWon": 0, "redCards": 1, "ownGoals": 0, "missedPens": 0},
+    "BIH": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}
+      }
 },
   "awards": {
     "Golden Boot": [], "Golden Ball": [], "Golden Glove": [], "Best Loser": [],
