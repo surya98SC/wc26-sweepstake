@@ -132,6 +132,30 @@
  "2026-07-02-USA-BIH": {
     "USA": {"pensWon": 0, "redCards": 1, "ownGoals": 0, "missedPens": 0},
     "BIH": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}
+},
+"2026-07-02-POR-CRO": {
+  "POR": {"pensWon": 1, "redCards": 0, "ownGoals": 0, "missedPens": 0}, 
+  "CRO": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}
+}, 
+"2026-07-03-AUS-EGY": {
+  "AUS": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}, 
+  "EGY": {"pensWon": 0, "redCards": 0, "ownGoals": 1, "missedPens": 0}
+}, 
+"2026-07-03-ARG-CPV": {
+  "ARG": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}, 
+  "CPV": {"pensWon": 0, "redCards": 0, "ownGoals": 1, "missedPens": 0}
+}, 
+"2026-07-04-PAR-FRA": {
+  "PAR": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0},
+  "FRA": {"pensWon": 1, "redCards": 0, "ownGoals": 0, "missedPens": 0}
+}, 
+"2026-07-05-BRA-NOR": {
+"BRA": {"pensWon": 2, "redCards": 0, "ownGoals": 0, "missedPens": 1}, 
+"NOR": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}
+}, 
+"2026-07-06-MEX-ENG": {
+"MEX": {"pensWon": 1, "redCards": 0, "ownGoals": 0, "missedPens": 0}, 
+"ENG": {"pensWon": 1, "redCards": 1, "ownGoals": 0, "missedPens": 0}
 }
 },
   "awards": {
