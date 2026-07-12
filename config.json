@@ -160,6 +160,10 @@
 "2026-07-07-ARG-EGY": {
 "ARG": {"pensWon": 1, "redCards": 0, "ownGoals": 0, "missedPens": 1}, 
 "EGY": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}
+},
+"2026-07-09-FRA-MAR": {
+"FRA": {"pensWon": 1, "redCards": 0, "ownGoals": 0, "missedPens": 1}, 
+"MAR": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}
 }
 },
   "awards": {
