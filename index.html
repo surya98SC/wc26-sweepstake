@@ -349,9 +349,16 @@ function saveKey(){ const v=document.getElementById("keyinput").value.trim(); if
 function setStatus(cls,msg){ document.getElementById("apidot").className="dot "+cls; document.getElementById("apistatus").textContent=msg; }
 
 /* ---------- data fetching ---------- */
+  function normStatus(m){
+  const valid=["SCHEDULED","TIMED","IN_PLAY","PAUSED","FINISHED","POSTPONED","SUSPENDED","CANCELLED"];
+  if(valid.includes(m.status)) return m.status;
+  if(m.score&&m.score.fullTime&&m.score.fullTime.home!=null) return "FINISHED";
+  if(new Date(m.utcDate)<new Date()) return "FINISHED";
+  return "TIMED";
+}
 function mapFDMatches(j){
   return (j.matches||[]).map(m=>({
-    id:m.id, utc:m.utcDate, status:m.status, stage:m.stage, group:(m.group||"").replace("GROUP_",""),
+    id:m.id, utc:m.utcDate, status:normStatus(m), stage:m.stage, group:(m.group||"").replace("GROUP_",""),
     home:findTeam(m.homeTeam), away:findTeam(m.awayTeam),
     homeName:m.homeTeam&&m.homeTeam.name, awayName:m.awayTeam&&m.awayTeam.name,
    hs:m.score&&m.score.fullTime?(m.score.duration==="PENALTY_SHOOTOUT"&&m.score.regularTime&&m.score.regularTime.home!=null?m.score.regularTime.home+(m.score.extraTime&&m.score.extraTime.home!=null?m.score.extraTime.home:0):m.score.fullTime.home):null,
