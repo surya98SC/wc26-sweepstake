@@ -168,6 +168,10 @@
 "2026-07-12-ARG-SUI": {
 "ARG": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0},
 "SUI": {"pensWon": 0, "redCards": 1, "ownGoals": 0, "missedPens": 0}
+},
+"2026-07-14-FRA-ESP": {
+"FRA": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}, 
+"ESP": {"pensWon": 1, "redCards": 0, "ownGoals": 0, "missedPens": 0}
 }
 },
   "awards": {
