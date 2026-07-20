@@ -172,10 +172,20 @@
 "2026-07-14-FRA-ESP": {
 "FRA": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}, 
 "ESP": {"pensWon": 1, "redCards": 0, "ownGoals": 0, "missedPens": 0}
+},
+"2026-07-18-FRA-ENG": {
+"FRA": {"pensWon": 0, "redCards": 0, "ownGoals": 0, "missedPens": 0}, 
+"ENG": {"pensWon": 1, "redCards": 0, "ownGoals": 0, "missedPens": 0}
 }
 },
   "awards": {
-    "Golden Boot": [], "Golden Ball": [], "Golden Glove": [], "Best Loser": [],
-    "Best Gainer": [], "Leakiest Defence": [], "Dirtiest Team": [], "Own Goal Machine": []
+  "Golden Boot": ["FRA"],
+  "Golden Ball": ["ESP"],
+  "Golden Glove": ["ESP"],
+  "Best Loser": ["URU"],
+  "Best Gainer": ["GHA"],
+  "Leakiest Defence": ["TUN", "IRQ"],
+  "Dirtiest Team": ["QAT", "RSA"],
+  "Own Goal Machine": ["QAT"]
   }
 }
